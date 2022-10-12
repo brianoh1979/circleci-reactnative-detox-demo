@@ -97,6 +97,7 @@ workflows:
   android:  
     jobs: 
       - detox_android
-      - beta_android
+#      - beta_android
       - rn/android_build:
           checkout: true
+          gradle_options: >- -Xmx2014m -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+UnlockExperimentalVMOptions -XX:+HeapDumpOnOutOfMemoryError -XX:+UseContainerSupport"
