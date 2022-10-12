@@ -93,7 +93,10 @@ workflows:
           pkg-manager: yarn
           version: 12.22.5
       - detox_ios
-#      - detox_android
-#      - beta_android
-#      - rn/android_build:
-#          checkout: true
+
+  android:  
+    jobs: 
+      - detox_android
+      - beta_android
+      - rn/android_build:
+          checkout: true
