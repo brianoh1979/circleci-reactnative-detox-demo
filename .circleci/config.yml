@@ -92,13 +92,7 @@ workflows:
           yarn-run: lint
           pkg-manager: yarn
           version: 12.22.5
-      - detox_ios:
-          requires:
-            - node/run
-          filters:
-            branches:
-              only:
-                - main
+      - detox_ios
 
   android:  
     jobs: 
@@ -107,3 +101,10 @@ workflows:
       - rn/android_build:
           checkout: true
           gradle_options: -Xmx2014m -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+UnlockExperimentalVMOptions -XX:+HeapDumpOnOutOfMemoryError -XX:+UseContainerSupport"
+          requires:
+            - detox_android
+            - beta_android
+          filters:
+            branches:
+              only:
+                - main
