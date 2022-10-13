@@ -76,7 +76,7 @@ jobs:
           app-dir: android
       - android/restore-gradle-cache
       - run:
-          command: bundle exec fastlane beta
+          command: bundle exec fastlane build_debug_app
           working_directory: android
       - android/save-gradle-cache
 
