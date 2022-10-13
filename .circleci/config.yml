@@ -92,7 +92,7 @@ workflows:
           yarn-run: lint
           pkg-manager: yarn
           version: 12.22.5
-      - detox_ios
+      - detox_ios:
           requires:
             - node/test
             - node/run
