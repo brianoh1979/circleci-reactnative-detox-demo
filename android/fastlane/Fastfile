@@ -24,11 +24,11 @@ platform :android do
   desc "Submit to Firebase"
   lane :beta do
     gradle(task: "assembleRelease")
-    firebase_app_distribution(
-      app: "1:300830567303:android:9b9ba2ce17104d0c",
-      testers: "brianoh@circleci.com",
-      apk_path: "app/build/outputs/apk/release/app-release.apk",
-      firebase_cli_token: ENV["FIREBASE_TOKEN"]
+#    firebase_app_distribution(
+#      app: "1:300830567303:android:9b9ba2ce17104d0c",
+#      testers: "brianoh@circleci.com",
+#      apk_path: "app/build/outputs/apk/release/app-release.apk",
+#      firebase_cli_token: ENV["FIREBASE_TOKEN"]
     )
   end
 end
