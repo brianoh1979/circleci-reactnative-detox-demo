@@ -93,6 +93,13 @@ workflows:
           pkg-manager: yarn
           version: 12.22.5
       - detox_ios
+          requires:
+            - node/test
+            - node/run
+          filters:
+            branches:
+              only:
+                - main
 
   android:  
     jobs: 
