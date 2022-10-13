@@ -29,6 +29,6 @@ platform :android do
 #      testers: "brianoh@circleci.com",
 #      apk_path: "app/build/outputs/apk/release/app-release.apk",
 #      firebase_cli_token: ENV["FIREBASE_TOKEN"]
-    )
+#    )
   end
 end
