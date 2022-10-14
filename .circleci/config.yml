@@ -54,7 +54,7 @@ jobs:
     parallelism: 2 
     steps:
       - checkout
-      - run: mkdir ~/junit/xml
+      - run: mkdir ~/junit && mkdir ~/junit/xml
       - node/install-packages:
           pkg-manager: yarn
       - run: yarn add --dev jest-junit
