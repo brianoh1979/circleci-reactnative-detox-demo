@@ -61,14 +61,14 @@ jobs:
           name: Run YARN tests
           command: | 
               TEST=$(circleci tests glob "__tests__/*.tsx" | circleci tests split --split-by=timings)
-              yarn run $TEST
-      - run:
-          command: cp junit.xml ~/junit/
-          when: always
-      - store_test_results:
-          path: ~/junit
-      - store_artifacts:
-          path: ~/junit      
+              yarn test --coverage $TEST
+#      - run:
+#          command: cp junit.xml ~/junit/
+#          when: always
+#      - store_test_results:
+#          path: ~/junit
+#      - store_artifacts:
+#          path: ~/junit      
 
   detox_android:
     executor:
