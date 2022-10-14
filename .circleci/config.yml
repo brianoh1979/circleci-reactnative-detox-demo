@@ -54,7 +54,7 @@ jobs:
     parallelism: 2 
     steps:
       - checkout
-      - run: mkdir ~/junit
+      - run: mkdir ~/junit/xml
       - node/install-packages:
           pkg-manager: yarn
       - run: yarn add --dev jest-junit
@@ -64,7 +64,7 @@ jobs:
               TEST=$(circleci tests glob "__tests__/*.tsx" | circleci tests split --split-by=timings)
               yarn test --coverage $TEST --runInBand --reporters=default --reporters=jest-junit
       - run:
-          command: cp junit.xml ~/junit/
+          command: cp junit.xml ~/junit/xml
           when: always
       - store_test_results:
           path: ~/junit
