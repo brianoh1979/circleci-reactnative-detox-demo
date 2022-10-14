@@ -51,6 +51,7 @@ jobs:
   unit-test:
     docker:
         - image: cimg/node:12.22.5
+    resource_class: medium
     parallelism: 2 
     steps:
       - checkout
@@ -108,10 +109,6 @@ workflows:
   test_and_distribute:
     jobs:
       - unit-test
- #     - node/test:
- #         name: unit-test
- #         pkg-manager: yarn
- #         version: 12.22.5
       - node/run:
           name: eslint
           yarn-run: lint
