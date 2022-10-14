@@ -48,6 +48,29 @@ jobs:
       - store_artifacts:
           path: artifacts
 
+  jobs:
+  unit-test:
+    docker:
+        - image: cimg/node:12.22.5
+    parallelism: 2 
+    steps:
+      - checkout
+      - run: mkdir ~/junit
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          name: Run YARN tests
+          command: | 
+              TEST=$(circleci tests glob "__tests__/*.tsx" | circleci tests split --split-by=timings)
+              yarn run $TEST
+      - run:
+          command: cp junit.xml ~/junit/
+          when: always
+      - store_test_results:
+          path: ~/junit
+      - store_artifacts:
+          path: ~/junit      
+
   detox_android:
     executor:
       name: android/android-machine
@@ -84,10 +107,11 @@ jobs:
 workflows:
   test_and_distribute:
     jobs:
-      - node/test:
-          name: unit-test
-          pkg-manager: yarn
-          version: 12.22.5
+      - unit-test
+ #     - node/test:
+ #         name: unit-test
+ #         pkg-manager: yarn
+ #         version: 12.22.5
       - node/run:
           name: eslint
           yarn-run: lint
